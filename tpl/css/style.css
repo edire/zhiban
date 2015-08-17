@@ -1,0 +1,70 @@
+
+*{
+margin:0;border:0;padding:0;
+}
+ul,li{
+	list-style:none;
+}
+.select td{
+	cursor:pointer;
+	border-radius: 10px;
+	text-shadow: 1px 1px 1px #fff;
+}
+.select td:hover{
+	background:rgb(173,173,173);
+}
+.grid{
+	max-width:780px;
+	min-width:400px;
+	overflow:hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+.zhiban {
+margin-top: 30px;
+padding: 20px;
+background: rgba(219, 219, 219, 0.46);
+border-radius: 13px;
+box-shadow: 1px 2px 9px 1px;
+}
+.userinfo{
+margin-top: 130px;
+padding: 20px;
+background: rgba(219, 219, 219, 0.46);
+border-radius: 13px;
+box-shadow: 1px 2px 9px 1px;
+}
+.back {
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: url(../images/5.jpg) repeat-x center 0px;
+position: absolute;
+z-index: -100;
+}
+.logintip {
+font-weight: bold;
+font-size: 16px;
+}
+.logintip a{
+	text-decoration:none;
+	float:right;
+}
+.notice {
+margin-top: 22px;
+font-size: 16px;
+font-weight: bold;
+}
+.zhibanlist {
+line-height: 30px;
+text-shadow: 1px 1px 1px #fff;
+}
+.erweima{
+	text-align:center;
+	margin-top:10px;
+}
+.time{
+	width:60px
+	
+}

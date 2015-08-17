@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><{$site_name}></title>
+<link href="<{$tmpurl}>/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="<{$tmpurl}>/js/jquery.js"></script>
+<script src="<{$tmpurl}>/js/datepicker.js"></script>
+<script src="<{$tmpurl}>/js/bootstrap.min.js"></script>
+<script src="<{$tmpurl}>/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+<div class="back"></div>
+<div class="userinfo grid">
+	<p style="border-bottom:1px solid;font-weight:bold;">添加值班</p>
+	<form action="<{spUrl c=admin a=addarticle}>" method="post" class="form-inline" role="form">
+	<div class="form-group">
+	<input type="text" name="title" class="form-control" id="exampleInputText" placeholder="标题">
+	</div>
+	<div class="form-group">
+	<input type="text" style="width: 80px;" name="number" class="form-control time" id="exampleInputText" placeholder="限制人数">
+	</div>
+	<div class="form-group">
+	<input type="text" name="year" style="width:70px" class="form-control " id="exampleInputText" placeholder="年">
+	</div>
+	<div class="form-group">
+	<input type="text" name="mon" style="width:70px" class="form-control " id="exampleInputText" placeholder="月">
+	</div>
+	<div class="form-group">
+	<input type="text" name="day" style="width:70px" class="form-control " id="exampleInputText" placeholder="日">
+	</div>
+	<div class="form-group">
+	<input type="text" name="hour" style="width:70px" class="form-control " id="exampleInputText" placeholder="时">
+	</div>
+	<input type="submit" class="btn btn-default" value="添加"/>
+	</form>
+</div>
+<div class="zhiban grid">
+	<p style="border-bottom:1px solid;font-weight:bold;">值班表列表</p>
+	<ul class="zhibanlist">
+		<{foreach from=$artsql item=article}>
+		<li><a href="<{spUrl c=main a=article p=$article.id}>" target="_blank" style="<{$article.style}>"><{$article.title}></a> | 每节人次 <{$article.number}> | 结束时间：<{$article.time}><a href="<{spUrl c=admin a=delarticle p=$article.id}>" style="float:right">删除</a> <span style="float:right"> | </span> <a href="<{spUrl c=admin a=modarticle p=$article.id}>" style="float:right">修改</a> <span style="float:right"> | </span> <a href="<{spUrl c=admin a=rearticle p=$article.id}>" style="float:right">清空</a></li>
+		<{/foreach}>
+	</ul>
+	<p style="overflow:hidden">	
+	<{if $nextpage!=""}><a href="<{$nextpage}>" class="btn btn-default" style="float:right">下一页</a><{/if}>
+	<{if $prevpage!=""}><a href="<{$prevpage}>" class="btn btn-default" style="float:right">上一页</a><{/if}>
+	</p>
+</div>
+<div class="zhiban grid">
+	<p style="border-bottom:1px solid;font-weight:bold;">系统设置</p>
+	<form action="<{spUrl c=admin a=refresh}>" role="form" method="post">
+		<div class="form-group">
+			网站名称<input type="text" name="sitename" class="form-control" id="exampleInputText" placeholder="网站名称" value="<{$sitename}>"/>
+		</div>
+		<div class="form-group">
+			网站地址<input type="text" name="siteurl" class="form-control" id="exampleInputText" placeholder="网站名称" value="<{$siteurl}>"/>
+		</div>
+		<div class="form-group">
+			网站公告<textarea type="text" name="notice" class="form-control" rows="3" placeholder="网站公告"><{$notice}></textarea>
+					<script type="text/javascript">CKEDITOR.replace('notice');</script>
+		</div>
+		<div class="form-group">
+			管理员密码（无需修改请勿修改）
+			<input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="密码" value="<{$password}>"/>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-default" value="刷新数据"/>
+		</div>
+	</form>
+</div>
+</body>
+</html>

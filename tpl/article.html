@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><{$site_name}></title>
+<link href="<{$tmpurl}>/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="<{$tmpurl}>/js/jquery.js"></script>
+<script src="<{$tmpurl}>/js/bootstrap.min.js"></script>
+<script>
+var t;
+		$(document).ready(function(){
+			$(".namebox").on("click",function(abc){
+				var abc=$(this);
+				var t=$(this).attr("t");
+				var c=$(this).attr("c");
+				var u=<{$uid}>;
+				var a=<{$aid}>;
+				if (u=="0"){
+					alert("请先登录！");
+					return;
+				}
+				$.post("<{spUrl c=option a=add}>", { tid:t, cid: c, uid:u, aid:a},
+						   function(data){
+						     if (data=="0"){
+						    	 alert("本节课已满员");
+						     }else if(data=="-1"){
+						    	 alert("已经结束");				    	 
+						     }else{
+									abc.html(data);
+						     }
+				});
+			});
+			
+		});
+</script>
+</head>
+<body>
+<div class="back"></div>
+<div class="userinfo grid">
+<{if $uid > 0}>
+<p class="logintip"><{$username}>,你好，欢迎来到<{$site_name}>!<a href="<{spUrl c=main a=loginout}>"> 退出</a><span style="float:right"> | </span><a href="<{spUrl c=main a=index}>">返回首页 </a></p>
+
+<{else if}>
+<p class="logintip"><{$title}><{$site_name}>!</p>
+<form action="<{spUrl c=main a=login}>" method="post" class="form-inline" role="form">
+<div class="form-group">
+<input type="text" name="username" class="form-control" id="exampleInputText" placeholder="姓名">
+</div>
+<div class="form-group">
+<input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="密码">
+</div>
+<input type="submit" class="btn btn-default" value="登录"/>
+</form>
+<{/if}>
+<p class="notice">
+公告：<{$notice}>
+</p>
+</div>
+<div class="zhiban grid table-responsive">
+<p style=" font-size: 20px; text-align: center; font-weight: bold; "><{$title}><br>（<{$endtime}>结束）<br><{$status}></p>
+<table class="select table">
+	<tr>
+		<th></th>
+		<th>周一</th>
+		<th>周二</th>
+		<th>周三</th>
+		<th>周四</th>
+		<th>周五</th>
+		<th>周六</th>
+		<th>周日</th>
+	</tr>
+	<tr>
+		<th>早自习</th>
+		<td class="namebox" t="1" c="0"><{$n10}></td>
+		<td class="namebox" t="2" c="0"><{$n20}></td>
+		<td class="namebox" t="3" c="0"><{$n30}></td>
+		<td class="namebox" t="4" c="0"><{$n40}></td>
+		<td class="namebox" t="5" c="0"><{$n50}></td>
+		<td class="namebox" t="6" c="0"><{$n60}></td>
+		<td class="namebox" t="7" c="0"><{$n70}></td>
+	</tr>
+	<tr>
+		<th>第一大节</th>
+		<td class="namebox" t="1" c="1"><{$n11}></td>
+		<td class="namebox" t="2" c="1"><{$n21}></td>
+		<td class="namebox" t="3" c="1"><{$n31}></td>
+		<td class="namebox" t="4" c="1"><{$n41}></td>
+		<td class="namebox" t="5" c="1"><{$n51}></td>
+		<td class="namebox" t="6" c="1"><{$n61}></td>
+		<td class="namebox" t="7" c="1"><{$n71}></td>
+	</tr>
+	<tr>
+		<th>第二大节</th>
+		<td class="namebox" t="1" c="2"><{$n12}></td>
+		<td class="namebox" t="2" c="2"><{$n22}></td>
+		<td class="namebox" t="3" c="2"><{$n32}></td>
+		<td class="namebox" t="4" c="2"><{$n42}></td>
+		<td class="namebox" t="5" c="2"><{$n52}></td>
+		<td class="namebox" t="6" c="2"><{$n62}></td>
+		<td class="namebox" t="7" c="2"><{$n72}></td>
+	</tr>
+	<tr>
+		<th>第三大节</th>
+		<td class="namebox" t="1" c="3"><{$n13}></td>
+		<td class="namebox" t="2" c="3"><{$n23}></td>
+		<td class="namebox" t="3" c="3"><{$n33}></td>
+		<td class="namebox" t="4" c="3"><{$n43}></td>
+		<td class="namebox" t="5" c="3"><{$n53}></td>
+		<td class="namebox" t="6" c="3"><{$n63}></td>
+		<td class="namebox" t="7" c="3"><{$n73}></td>
+	</tr>
+	<tr>
+		<th>第四大节</th>
+		<td class="namebox" t="1" c="4"><{$n14}></td>
+		<td class="namebox" t="2" c="4"><{$n24}></td>
+		<td class="namebox" t="3" c="4"><{$n34}></td>
+		<td class="namebox" t="4" c="4"><{$n44}></td>
+		<td class="namebox" t="5" c="4"><{$n54}></td>
+		<td class="namebox" t="6" c="4"><{$n64}></td>
+		<td class="namebox" t="7" c="4"><{$n74}></td>
+	</tr>
+	<tr>
+		<th>晚自习</th>
+		<td class="namebox" t="1" c="5"><{$n15}></td>
+		<td class="namebox" t="2" c="5"><{$n25}></td>
+		<td class="namebox" t="3" c="5"><{$n35}></td>
+		<td class="namebox" t="4" c="5"><{$n45}></td>
+		<td class="namebox" t="5" c="5"><{$n55}></td>
+		<td class="namebox" t="6" c="5"><{$n65}></td>
+		<td class="namebox" t="7" c="5"><{$n75}></td>
+	</tr>
+</table>
+
+<{if $uid=='4'}>
+<div>
+<p style="border-bottom:1px solid">
+特殊情况记录添加
+</p>
+<form action="<{spUrl c=main a=addconn}>" method="post" class="form-inline" role="form">
+<input type="hidden" name="aid" value="<{$aid}>">
+<div class="form-group">
+<input type="text" name="name" class="form-control" id="exampleInputText" placeholder="姓名">
+</div>
+<div class="form-group">
+<input type="text" name="status" class="form-control" id="exampleInputText" placeholder="情况">
+</div>
+<input type="submit" class="btn btn-default" value="提交"/>
+</form>
+<{/if}>
+<div>
+<p style="border-bottom:1px solid">
+特殊情况记录
+</p>
+<div class="table-responsive">
+<table class="select table">
+
+<tr>
+	<th>姓名</th>
+	<th>情况</th>
+	<th>发布时间</th>
+</tr><{foreach from=$connsql item=conn}>
+<tr>
+	<td><{$conn.name}></td>
+	<td><{$conn.status}></td>
+	<td><{$conn.time}></td>
+<tr>
+<{/foreach}>
+</table>
+</div>
+</div>
+<script type="text/javascript">
+   /*
+    * 请修改下面js对象的内容以完成定制
+    * 内容：请定制为需要提醒用户的内容,
+    * 时间：请定制为事件发生的时间，格式为：年-月-日 时:分 
+    * advance：请定制为需要提前提醒用户的时间，0为准时提醒
+    * url： 请定制为提醒用户访问的url链接
+    * icon： 生成的icon的大小，可选值为1，2，3，尺寸分别为90*24，63*24，50*16
+    * 注意：如果不使用标准接口，而是按需要自己生成链接地址
+    * 请用encodeURIComponent对内容和时间进行编码。
+    */
+var __qqClockShare = {
+   content: "这是艺术学院学生会值班的提醒。请点击网址查看详细值班时间。",
+   time: "<{$time}>",
+   advance: 0,
+   url: location.href,
+   icon: "1_1"
+};
+document.write('<a href="http://qzs.qq.com/snsapp/app/bee/widget/open.htm#content=' + encodeURIComponent(__qqClockShare.content) +'&time=' + encodeURIComponent(__qqClockShare.time) +'&advance=' + __qqClockShare.advance +'&url=' + encodeURIComponent(__qqClockShare.url) + '" target="_blank"><img src="http://i.gtimg.cn/snsapp/app/bee/widget/img/' + __qqClockShare.icon + '.png" style="border:0px;"/></a>');
+
+</script>
+<span class="logintip" style="color:rgb(56,35,255)">可设置提醒时间，具体值班表将发到个人QQ上。默认时间为周日晚8点。</span>
+<div class="erweima">
+<{$erweima}>
+<p  class="logintip" style="color:rgb(56,35,255);margin-top:10px;">本页面二维码，可用手机扫描二维码直接进入网页。<br/>也可复制一下地址：<br><{$url}></p>
+
+</div>
+</div>
+</div>
+
+<div class="grid zhiban">
+	© <a href="http://www.ys.ldu.edu.cn/" target="_blank">鲁东大学艺术学院 </a> 版权所有 |
+	Powerby <a href="http://www.ldustu.com" target="_blank">鲁大学生网</a> &gt; 
+	<a href="http://www.fanmingfei.cn" target="_blank">Edire-范明非</a> |  
+	<a href="<{spUrl c=main a=guestbook}>" target="_blank">留言&吐槽</a> | 
+	<a href="<{spUrl c=main a=signin}>" target="_blank">注册</a> | 
+	<a href="<{spUrl c=admin a=login}>" target="_blank">Refresh</a> | 
+	<a href="<{spUrl c=main a=printf p=<{$aid}>}>" target="_blank">打印</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><{$site_name}></title>
+<link href="<{$tmpurl}>/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="<{$tmpurl}>/js/jquery.js"></script>
+<script src="<{$tmpurl}>/js/bootstrap.min.js"></script>
+<script>
+var t;
+		$(document).ready(function(){
+			$(".namebox").on("click",function(abc){
+				var abc=$(this);
+				var t=$(this).attr("t");
+				var c=$(this).attr("c");
+				var u=<{$uid}>;
+				if (u=="0"){
+					alert("请先登录！");
+					return;
+				}
+				$.post("<{spUrl c=option a=add}>", { tid:t, cid: c, uid:u},
+						   function(data){
+						     if (data=="0"){
+						    	 alert("本节课已满员");
+						     }else{
+									abc.html(data);
+						     }
+				});
+			});
+			
+		});
+</script>
+</head>
+<body>
+<div class="back"></div>
+<div class="userinfo grid">
+<{if $uid > 0}>
+<p class="logintip"><{$username}>,你好，欢迎来到<{$site_name}>!<a href="<{spUrl c=main a=loginout}>">退出</a></p>
+
+<{else if}>
+<p class="logintip">登陆<{$site_name}>!</p>
+<form action="<{spUrl c=main a=login}>" method="post" class="form-inline" role="form">
+<div class="form-group">
+<input type="text" name="username" class="form-control" id="exampleInputText" placeholder="姓名">
+</div>
+<div class="form-group">
+<input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="密码">
+</div>
+<input type="submit" class="btn btn-default" value="登录"/>
+</form>
+<{/if}>
+<p class="notice">
+公告：<{$notice}>
+</p>
+</div>
+<div class="zhiban grid">
+	<p style="border-bottom:1px solid;font-weight:bold;">值班表列表</p>
+	<ul class="zhibanlist">
+		<{foreach from=$artsql item=article}>
+		<li><a href="<{spUrl c=main a=article p=$article.id}>" style="<{$article.style}>"><{$article.title}></a>（<{$article.endtime}>结束）</li>
+		<{/foreach}>
+	</ul>
+<p style="overflow:hidden">	
+<{if $nextpage!=""}><a href="<{$nextpage}>" class="btn btn-default" style="float:right">下一页</a><{/if}>
+<{if $prevpage!=""}><a href="<{$prevpage}>" class="btn btn-default" style="float:right">上一页</a><{/if}>
+</p>
+</div>
+<div class="grid zhiban">
+	© <a href="http://www.ys.ldu.edu.cn/" target="_blank">鲁东大学艺术学院 </a> 版权所有 |
+	Powerby <a href="http://www.ldustu.com" target="_blank">鲁大学生网</a> &gt; 
+	<a href="http://www.fanmingfei.cn" target="_blank">Edire-范明非</a> |  
+	<a href="<{spUrl c=main a=guestbook}>" target="_blank">留言&吐槽</a> | 
+	<a href="<{spUrl c=main a=signin}>" target="_blank">注册</a> | 
+	<a href="<{spUrl c=admin a=login}>" target="_blank">Refresh</a>
+</div>
+</body>
+</html>

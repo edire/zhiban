@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>打印</title>
+<link href="<{$tmpurl}>/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="<{$tmpurl}>/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="<{$tmpurl}>/js/jquery.js"></script>
+<script src="<{$tmpurl}>/js/bootstrap.min.js"></script>
+<style>
+.select td:hover{
+	background:#fff;
+}
+table,td,th{
+	border:2px solid;
+}
+</style>
+
+</head>
+<body style="margin:40px">
+<p style="text-align:center;font-size:44px;">
+<{$title}>
+</p>
+<table class="select table">
+	<tr>
+		<th></th>
+		<th>周一</th>
+		<th>周二</th>
+		<th>周三</th>
+		<th>周四</th>
+		<th>周五</th>
+	</tr>
+	<tr>
+		<td>早自习</td>
+		<td class="namebox" t="1" c="0"><{$n10}></td>
+		<td class="namebox" t="2" c="0"><{$n20}></td>
+		<td class="namebox" t="3" c="0"><{$n30}></td>
+		<td class="namebox" t="4" c="0"><{$n40}></td>
+		<td class="namebox" t="5" c="0"><{$n50}></td>
+	</tr>
+	<tr>
+		<td>第一大节</td>
+		<td class="namebox" t="1" c="1"><{$n11}></td>
+		<td class="namebox" t="2" c="1"><{$n21}></td>
+		<td class="namebox" t="3" c="1"><{$n31}></td>
+		<td class="namebox" t="4" c="1"><{$n41}></td>
+		<td class="namebox" t="5" c="1"><{$n51}></td>
+	</tr>
+	<tr>
+		<td>第二大节</td>
+		<td class="namebox" t="1" c="2"><{$n23}></td>
+		<td class="namebox" t="2" c="2"><{$n22}></td>
+		<td class="namebox" t="3" c="2"><{$n32}></td>
+		<td class="namebox" t="4" c="2"><{$n42}></td>
+		<td class="namebox" t="5" c="2"><{$n52}></td>
+	</tr>
+	<tr>
+		<td>第三大节</td>
+		<td class="namebox" t="1" c="3"><{$n13}></td>
+		<td class="namebox" t="2" c="3"><{$n23}></td>
+		<td class="namebox" t="3" c="3"><{$n33}></td>
+		<td class="namebox" t="4" c="3"><{$n43}></td>
+		<td class="namebox" t="5" c="3"><{$n53}></td>
+	</tr>
+	<tr>
+		<td>第四大节</td>
+		<td class="namebox" t="1" c="4"><{$n14}></td>
+		<td class="namebox" t="2" c="4"><{$n24}></td>
+		<td class="namebox" t="3" c="4"><{$n34}></td>
+		<td class="namebox" t="4" c="4"><{$n44}></td>
+		<td class="namebox" t="5" c="4"><{$n54}></td>
+	</tr>
+	<tr>
+		<td>晚自习</td>
+		<td class="namebox" t="1" c="5"><{$n15}></td>
+		<td class="namebox" t="2" c="5"><{$n25}></td>
+		<td class="namebox" t="3" c="5"><{$n35}></td>
+		<td class="namebox" t="4" c="5"><{$n45}></td>
+		<td class="namebox" t="5" c="5"><{$n55}></td>
+	</tr>
+</table>
+<p style="text-align:right">
+<{$time}><a href="javascript:window.print();" style="text-decoration:none"> 打印</a>
+</p>
+</body>
+</html>
